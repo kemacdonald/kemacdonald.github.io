@@ -2,7 +2,7 @@ body {
     background: #fff;
     margin: 0px;
     padding: 0px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lucida Sans Unicode', sans-serif;
   }
 
 hr {
@@ -13,12 +13,8 @@ hr {
 
 
 a:link {
-  color: blue;
+  color: #006aff;
   text-decoration: none;
-}
-
-a:active {
-  color: blue;
 }
 
 a:hover {
@@ -26,17 +22,25 @@ a:hover {
 }
 
 p {
-	font-family: times, sans-serif;
+	font-family: "Avenir";
+  font-size: 14px;
+  text-align: "justify";
 }
 
  h2, h3 {
-  font-family: 'Lato', sans-serif;
-  font-size: 26px;
+  font-family: 'Lucida Sans Unicode';
+  font-size: 20px;
   color:black;
  }
 
 
 #container {
+  width: 500px;
+  margin: 0 auto;
+  padding-top: 70px;  
+}
+
+#container_papers {
   width: 600px;
   margin: 0 auto;
   padding-top: 70px;  
@@ -65,12 +69,12 @@ div.footer {
 }
 
 #navigation a {
-  font-size: 20px;
+  font-size: 18px;
   padding-left: 20px;
   padding-right: 20px;
   color: white;
   text-decoration: none;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Avenir', sans-serif;
 }
 
 #navigation a:hover {
@@ -89,4 +93,18 @@ table {
   padding-bottom: 15px;
 }
 
+table.teaching {
+  font-family: "Avenir";
+  font-size: 15px;
+  text-align: "justify";
+  table-layout:fixed;
+  border-spacing: 15px;
+}
+
+
+a.resourcelink {
+  color:#FFA500; 
+  cursor: pointer; 
+  hover: #0087ff
+}
 
