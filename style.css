@@ -35,12 +35,12 @@ p {
 
 
 #container {
-  width: 500px;
+  width: 600px;
   margin: 0 auto;
   padding-top: 70px;  
 }
 
-#container_papers {
+#container_wide {
   width: 700px;
   margin: 0 auto;
   padding-top: 70px;  
