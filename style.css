@@ -15,10 +15,13 @@ hr {
 a:link {
   color: #0059FF;
   text-decoration: none;
+  font-weight: normal;
 }
 
 a:hover {
   color: #FFA500;
+  text-decoration: none;
+  font-weight: normal;
 }
 
 p {
