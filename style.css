@@ -27,7 +27,13 @@ a:hover {
 
 p {
 	font-family: "Avenir";
-  font-size: 14px;
+  font-size: 15px;
+  text-align: "justify";
+}
+
+p.papers {
+  font-family: "Avenir";
+  font-size: 13px;
   text-align: "justify";
 }
 
@@ -39,7 +45,7 @@ p {
 
 
 #container {
-  width: 600px;
+  width: 650px;
   margin: 0 auto;
   padding-top: 70px;  
 }
