@@ -33,7 +33,7 @@ p {
 
 p.papers {
   font-family: "Avenir";
-  font-size: 13px;
+  font-size: 15px;
   text-align: "justify";
 }
 
@@ -45,7 +45,7 @@ p.papers {
 
 
 #container {
-  width: 650px;
+  width: 700px;
   margin: 0 auto;
   padding-top: 70px;  
 }
@@ -114,8 +114,21 @@ table.teaching td {
 }
 
 a.resourcelink {
+  font-weight: bold;
   color:#FF4500; 
   cursor: pointer; 
-  hover: #0087ff
+  hover: #0059FF;
 }
 
+a.resourcelink:hover {
+  color: #0059FF;
+  text-decoration: none;
+}
+
+ul {
+  margin-left: 30px;
+}
+
+#list_container {
+ width: 700px; 
+}
