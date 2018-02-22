@@ -47,16 +47,16 @@ p.papers {
 #container {
   width: 700px;
   margin: 0 auto;
-  padding-top: 70px;  
+  padding-top: 70px;
 }
 
 #container_wide {
-  width: 800px;
+  width: 700px;
   margin: 0 auto;
-  padding-top: 70px;  
+  padding-top: 70px;
 }
 
-div.footer { 
+div.footer {
   border-top: 1px dotted #ddd; padding-top: 9px;
   margin-top: 42px; font-size: 16px; color: #888;
   text-align: center; }
@@ -86,7 +86,7 @@ div.footer {
 
 #navigation a:hover {
   color: grey;
-} 
+}
 
 #footer {
  clear: both;
@@ -109,14 +109,14 @@ table.teaching {
 
 }
 
-table.teaching td {    
+table.teaching td {
 	padding:0 20px 0 15px;
 }
 
 a.resourcelink {
   font-weight: bold;
-  color:#FF4500; 
-  cursor: pointer; 
+  color:#FF4500;
+  cursor: pointer;
   hover: #0059FF;
 }
 
@@ -130,5 +130,5 @@ ul {
 }
 
 #list_container {
- width: 700px; 
+ width: 700px;
 }
