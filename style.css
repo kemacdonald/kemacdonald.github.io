@@ -115,6 +115,7 @@ table.teaching td {
 
 a.resourcelink {
   font-weight: bold;
+  font-size: 13px;
   color:#FF4500;
   cursor: pointer;
   hover: #0059FF;
