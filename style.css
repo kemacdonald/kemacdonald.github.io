@@ -1,17 +1,16 @@
 body {
-    background: #fff;
-    margin: 0px;
-    padding: 0px;
-    font-family: 'Lucida Sans Unicode', sans-serif;
-    font-weight: lighter;
-  }
-
-hr {
-    border: 0;
-    border-bottom: 1px dashed #ccc;
-    background: #999;
+  background: #fff;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Lucida Sans Unicode', sans-serif;
+  font-weight: lighter;
 }
 
+hr {
+  border: 0;
+  border-bottom: 1px dashed #ccc;
+  background: #999;
+}
 
 a:link {
   color: #0059FF;
@@ -26,7 +25,7 @@ a:hover {
 }
 
 p {
-	font-family: "Avenir";
+  font-family: "Avenir";
   font-size: 15px;
   text-align: "justify";
 }
@@ -37,12 +36,11 @@ p.papers {
   text-align: "justify";
 }
 
- h2, h3 {
+h2, h3 {
   font-family: 'Lucida Sans Unicode';
   font-size: 20px;
-  color:black;
- }
-
+  color: black;
+}
 
 #container {
   width: 700px;
@@ -57,11 +55,15 @@ p.papers {
 }
 
 div.footer {
-  border-top: 1px dotted #ddd; padding-top: 9px;
-  margin-top: 42px; font-size: 16px; color: #888;
-  text-align: center; }
+  border-top: 1px dotted #ddd;
+  padding-top: 9px;
+  margin-top: 42px;
+  font-size: 16px;
+  color: #888;
+  text-align: center;
+}
 
- #navigation {
+#navigation {
   position: fixed;
   top: 0px;
   width: 100%;
@@ -89,11 +91,11 @@ div.footer {
 }
 
 #footer {
- clear: both;
- position: relative;
- z-index: 10;
- height: 3em;
- margin-top: -3em;
+  clear: both;
+  position: relative;
+  z-index: 10;
+  height: 3em;
+  margin-top: -3em;
 }
 
 table {
@@ -104,19 +106,18 @@ table.teaching {
   font-family: "Avenir";
   font-size: 16px;
   text-align: "justify";
-  table-layout:fixed;
+  table-layout: fixed;
   border-spacing: 15px;
-
 }
 
 table.teaching td {
-	padding:0 20px 0 15px;
+  padding: 0 20px 0 15px;
 }
 
 a.resourcelink {
   font-weight: bold;
   font-size: 13px;
-  color:#FF4500;
+  color: #FF4500;
   cursor: pointer;
   hover: #0059FF;
 }
@@ -131,5 +132,5 @@ ul {
 }
 
 #list_container {
- width: 700px;
+  width: 700px;
 }
