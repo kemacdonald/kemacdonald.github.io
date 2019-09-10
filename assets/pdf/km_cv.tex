@@ -1,0 +1,524 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Simple LaTeX CV Template %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% NOTE: If you find that it says                                     %%
+%%                                                                    %%
+%%                           1 of ??                                  %%
+%%                                                                    %%
+%% at the bottom of your first page, this means that the AUX file     %%
+%% was not available when you ran LaTeX on this source. Simply RERUN  %%
+%% LaTeX to get the ``??'' replaced with the number of the last page  %%
+%% of the document. The AUX file will be generated on the first run   %%
+%% of LaTeX and used on the second run to fill in all of the          %%
+%% references.                                                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Don't like 10pt? Try 11pt or 12pt
+\documentclass[10pt]{article}
+
+% The automated optical recognition software used to digitize resume
+% information works best with fonts that do not have serifs. This
+% command uses a sans serif font throughout. Uncomment both lines (or at
+% least the second) to restore a Roman font (i.e., a font with serifs).
+%\usepackage{times}
+%\renewcommand{\familydefault}{\sfdefault}
+
+% This is a helpful package that puts math inside length specifications
+\usepackage{calc}
+\usepackage{comment}
+
+% Simpler bibsection for CV sections
+% (thanks to natbib for inspiration)
+\makeatletter
+\newlength{\bibhang}
+\setlength{\bibhang}{1em} %1em}
+\newlength{\bibsep}
+ {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
+\newenvironment{bibsection}%
+        {\begin{enumerate}{}{%
+%        {\begin{list}{}{%
+       \setlength{\leftmargin}{\bibhang}%
+       \setlength{\itemindent}{-\leftmargin}%
+       \setlength{\itemsep}{\bibsep}%
+       \setlength{\parsep}{\z@}%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\topsep}{0pt}}}
+        {\end{enumerate}\vspace{-.6\baselineskip}}
+%        {\end{list}\vspace{-.6\baselineskip}}
+\makeatother
+
+% Layout: Puts the section titles on left side of page
+\reversemarginpar
+
+%
+%         PAPER SIZE, PAGE NUMBER, AND DOCUMENT LAYOUT NOTES:
+%
+% The next \usepackage line changes the layout for CV style section
+% headings as marginal notes. It also sets up the paper size as either
+% letter or A4. By default, letter was used. If A4 paper is desired,
+% comment out the letterpaper lines and uncomment the a4paper lines.
+%
+% As you can see, the margin widths and section title widths can be
+% easily adjusted.
+%
+% ALSO: Notice that the includefoot option can be commented OUT in order
+% to put the PAGE NUMBER *IN* the bottom margin. This will make the
+% effective text area larger.
+%
+% IF YOU WISH TO REMOVE THE ``of LASTPAGE'' next to each page number,
+% see the note about the +LP and -LP lines below. Comment out the +LP
+% and uncomment the -LP.
+%
+% IF YOU WISH TO REMOVE PAGE NUMBERS, be sure that the includefoot line
+% is uncommented and ALSO uncomment the \pagestyle{empty} a few lines
+% below.
+%
+
+%% Use these lines for letter-sized paper
+\usepackage[paper=letterpaper,
+            %includefoot, % Uncomment to put page number above margin
+            marginparwidth=1.2in,     % Length of section titles
+            marginparsep=.05in,       % Space between titles and text
+            margin=1in,               % 1 inch margins
+            includemp]{geometry}
+
+%% Use these lines for A4-sized paper
+%\usepackage[paper=a4paper,
+%            %includefoot, % Uncomment to put page number above margin
+%            marginparwidth=30.5mm,    % Length of section titles
+%            marginparsep=1.5mm,       % Space between titles and text
+%            margin=25mm,              % 25mm margins
+%            includemp]{geometry}
+
+%% More layout: Get rid of indenting throughout entire document
+\setlength{\parindent}{0in}
+
+\usepackage[shortlabels]{enumitem}
+
+%% Reference the last page in the page number
+%
+% NOTE: comment the +LP line and uncomment the -LP line to have page
+%       numbers without the ``of ##'' last page reference)
+%
+% NOTE: uncomment the \pagestyle{empty} line to get rid of all page
+%       numbers (make sure includefoot is commented out above)
+%
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+%\pagestyle{empty}      % Uncomment this to get rid of page numbers
+\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfootoffset{\marginparsep+\marginparwidth}
+\newlength{\footpageshift}
+\setlength{\footpageshift}
+          {0.5\textwidth+0.5\marginparsep+0.5\marginparwidth-2in}
+\lfoot{\hspace{\footpageshift}%
+       \parbox{4in}{\, \hfill %
+                    \arabic{page} of \protect\pageref*{LastPage} % +LP
+%                    \arabic{page}                               % -LP
+                    \hfill \,}}
+
+% Finally, give us PDF bookmarks
+\usepackage{color,hyperref}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
+\hypersetup{colorlinks,breaklinks,
+            linkcolor=darkblue,urlcolor=darkblue,
+            anchorcolor=darkblue,citecolor=darkblue}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The title (name) with a horizontal rule under it
+% (optional argument typesets an object right-justified across from name
+%  as well)
+%
+% Usage: \makeheading{name}
+%        OR
+%        \makeheading[right_object]{name}
+%
+% Place at top of document. It should be the first thing.
+% If ``right_object'' is provided in the square-braced optional
+% argument, it will be right justified on the same line as ``name'' at
+% the top of the CV. For example:
+%
+%       \makeheading[\emph{Curriculum vitae}]{Your Name}
+%
+% will put an emphasized ``Curriculum vitae'' at the top of the document
+% as a title. Likewise, a picture could be included:
+%
+%   \makeheading[\includegraphics[height=1.5in]{my_picutre}]{Your Name}
+%
+% the picture will be flush right across from the name.
+\newcommand{\makeheading}[2][]%
+        {\hspace*{-\marginparsep minus \marginparwidth}%
+         \begin{minipage}[t]{\textwidth+\marginparwidth+\marginparsep}%
+             {\large \bfseries #2 \hfill #1}\\[-0.15\baselineskip]%
+                 \rule{\columnwidth}{1pt}%
+         \end{minipage}}
+
+% The section headings
+%
+% Usage: \section{section name}
+\renewcommand{\section}[1]{\pagebreak[3]%
+    \hyphenpenalty=10000%
+    \vspace{1.3\baselineskip}%
+    \phantomsection\addcontentsline{toc}{section}{#1}%
+    \noindent\llap{\scshape\smash{\parbox[t]{\marginparwidth}{\raggedright #1}}}%
+    \vspace{-\baselineskip}\par}
+
+% An itemize-style list with lots of space between items
+\newenvironment{outerlist}[1][\enskip\textbullet]%
+        {\begin{itemize}[#1,leftmargin=*]}{\end{itemize}%
+         \vspace{-.6\baselineskip}}
+
+% An environment IDENTICAL to outerlist that has better pre-list spacing
+% when used as the first thing in a \section
+\newenvironment{lonelist}[1][\enskip\textbullet]%
+        {\begin{list}{#1}{%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\topsep}{0pt}}}
+        {\end{list}\vspace{-.6\baselineskip}}
+
+% An itemize-style list with little space between items
+\newenvironment{innerlist}[1][\enskip\textbullet]%
+        {\begin{itemize}[#1,leftmargin=*,parsep=0pt,itemsep=0pt,topsep=0pt,partopsep=0pt]}
+        {\end{itemize}}
+
+% An environment IDENTICAL to innerlist that has better pre-list spacing
+% when used as the first thing in a \section
+\newenvironment{loneinnerlist}[1][\enskip\textbullet]%
+        {\begin{itemize}[#1,leftmargin=*,parsep=0pt,itemsep=0pt,topsep=0pt,partopsep=0pt]}
+        {\end{itemize}\vspace{-.6\baselineskip}}
+
+% To add some paragraph space between lines.
+% This also tells LaTeX to preferably break a page on one of these gaps
+% if there is a needed pagebreak nearby.
+\newcommand{\blankline}{\quad\pagebreak[3]}
+\newcommand{\halfblankline}{\quad\vspace{-0.5\baselineskip}\pagebreak[3]}
+
+% Uses hyperref to link DOI
+\newcommand\doilink[1]{\href{https://doi.org/#1}{#1}}
+\newcommand\doi[1]{doi:\doilink{#1}}
+
+% For \url{SOME_URL}, links SOME_URL to the url SOME_URL
+\providecommand*\url[1]{\href{#1}{#1}}
+% Same as above, but pretty-prints SOME_URL in teletype fixed-width font
+\renewcommand*\url[1]{\href{#1}{\texttt{#1}}}
+
+% For \email{ADDRESS}, links ADDRESS to the url mailto:ADDRESS
+\providecommand*\email[1]{\href{mailto:#1}{#1}}
+% Same as above, but pretty-prints ADDRESS in teletype fixed-width font
+%\renewcommand*\email[1]{\href{mailto:#1}{\texttt{#1}}}
+
+%\providecommand\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+%    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+%\providecommand\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+%    \TeX}}
+\providecommand\BibTeX{{B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    \TeX}}
+\providecommand\Matlab{\textsc{Matlab}}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Begin CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\makeheading{Kyle MacDonald, Ph.D.}
+
+\section{Contact Information}
+
+% NOTE: Mind where the & separators and \\ breaks are in the following
+%       table.
+%
+% ALSO: \rcollength is the width of the right column of the table
+%       (adjust it to your liking; default is 1.85in).
+%
+\newlength{\rcollength}\setlength{\rcollength}{1.4in}%
+%
+\begin{tabular}[t]{@{}p{\textwidth-\rcollength}p{\rcollength}}
+%\href{http://www.cse.osu.edu/}%
+{Department of Communication} & \\
+\href{http://comm.ucla.edu/}{UCLA} & 860-324-7315 \\
+2225 Rolfe Hall  & \email{kemacdonald@ucla.edu} \\
+Los Angeles, CA  90095  & \href{http://kemacdonald.com}{kemacdonald.com} \\
+\end{tabular}
+
+
+%%%%%%%%%%%%% Employment %%%%%%%%%%%%%%%
+
+\vspace{.1in}
+
+\section{Employment}
+
+\textbf{Postdoctoral Researcher} \hfill {Jan 2019 - present}
+\begin{innerlist}
+\item[] \href{https://www.annewarlaumont.org/}{Emergence of Communication Lab}\\
+        Department of Communications,  UCLA\\
+        Anne S. Warlaumont, Ph.D.
+\end{innerlist}
+\vspace{.1in}
+
+\textbf{Scientific Consultant} \hfill {Jan 2018 - Sept 2018}
+\begin{innerlist}
+\item[] \href{https://www.apprente.com/}{Apprente}\\
+        Artificial Intelligence for dialogue agents
+\end{innerlist}
+\vspace{.1in}
+
+
+\textbf{Lab Manager} \hfill {2010 - 2013}
+\begin{innerlist}
+\item[] Language Learning Lab,\\
+	Department of Psychology, Stanford University\\
+        Anne Fernald, Ph.D.
+\end{innerlist}
+\vspace{.1in}
+
+\textbf{Research Assistant} \hfill {2008 - 2010}
+\begin{innerlist}
+\item[] Cognitive Development Lab,\\
+        Department of Psychology, Wesleyan University\\
+        Hilary Barth, Ph.D. and Anna Shusterman, Ph.D.
+\end{innerlist}
+
+
+%%%%%%%%%%%%% EDUCATION %%%%%%%%%%%%%%%
+
+\section{Education}
+
+\href{http://www.stanford.edu/}{\textbf{Stanford University}},
+Stanford, CA
+\begin{outerlist}
+
+\item[] Ph.D.,
+        \href{https://psychology.stanford.edu/gradprogram}
+             {Developmental Psychology}, 2013 - 2018
+        \begin{innerlist}
+        \item Thesis Topic: \emph{Children's information seeking during \\ signed and spoken language processing}
+        \item Advisor:
+              \href{http://www.stanford.edu/~mcfrank/}
+                   {Michael C. Frank}
+        \item Committee:
+                    {Hyo Gweon, Virginia Marchman, \& \\
+                    Jay McClelland}
+        \end{innerlist}
+\end{outerlist}
+
+\vspace{.1in}
+
+\href{http://www.wesleyan.edu/}{\textbf{Wesleyan University}},
+Middletown, CT
+\begin{outerlist}
+\item[] B.A.,
+             {with high honors in Psychology}, May 2010
+        \begin{innerlist}
+         \item Thesis Topic: \emph{Group membership disrupts preschoolers' \\ selective learning}
+         \item Advisor:
+              \href{http://hbarth.faculty.wesleyan.edu/}
+                   {Hilary Barth}
+        \end{innerlist}
+
+\end{outerlist}
+
+%%%%%%%%%%%%% AWARDS %%%%%%%%%%%%%%%
+
+\section{Honors and Awards}
+
+\vspace{-.1in}
+
+\begin{outerlist}
+\item[] Stinehart-Reed Graduate Fellowship, Stanford University (2017 - 2018)
+\item[] Graduate Research Fellowship, National Science Foundation (2014 - 2017)
+\item[] Norman H. Anderson Travel Award, Stanford University  (2016, 2018)
+\item[] High Honors in Psychology, Wesleyan University (2010)
+\item[] Walkley Prize for Excellence in Psychological Research, Wesleyan University (2010)
+\item[] Quantiative Analysis Center Research Fellowship, Wesleyan University (2008)
+\item[] Tomasso Scholarship, Kingswood-Oxford (2006)
+\end{outerlist}
+
+%%%%%%%%%%%%% PUBLICATIONS %%%%%%%%%%%%%%%
+
+\vspace{.1in}
+
+\section{Publications}
+\vspace{-.1275in}
+\begin{bibsection}
+
+\item {\bf MacDonald, K.}, Marchman, V.A., Fernald, A., \& Frank, M.C. (submitted). Children flexibly seek visual information during signed and spoken language \\comprehension.
+
+\item {\bf MacDonald, K.}, LaMarr, T., Corina, D., Marchman, V.A., \& Fernald, A. (2018). Real-time lexical comprehension in young children learning American Sign Language. \emph{Developmental Science}.
+
+\item {\bf MacDonald, K.}, Marchman, V.A., \& Fernald, A. (in prep). M-o-o-s as cues: Young children map novel animal vocalizations to unfamiliar animals. Manuscript in preparation.
+
+\item Sanchez, A., Meylan, S., Braginsky, M., {\bf MacDonald, K.}, Yurovsky, D., \& Frank, M. C. (2018). childes-db: a flexible and reproducible interface to the Child Language Data Exchange System (CHILDES).
+
+\item Hardwicke, T. E., Mathur, M. B., {\bf MacDonald, K.}, Nilsonne, G., Banks, G. C., Kidwell, M.C., Hofelich-Mohr, A., Clayton, E., Yoon, E.J., Tessler, M.H., Lenne, R., Altman, S., Long, B., \& Frank, M.C. (2018). Data availability, reusability, and analytic reproducibility: Evaluating the impact of a mandatory open data policy at the journal Cognition.
+
+\item {\bf MacDonald, K.}, Marchman, V.A., Fernald, A., \& Frank, M.C. (2018). Adults and preschoolers seek visual information to support language comprehension in noisy environments. \emph{Proceedings of the 40th Annual Meeting of the Cognitive Science Society.}
+
+\item Yoon, E.J.*, {\bf MacDonald, K.*}, Asaba M., Gweon, H., \& Frank, M.C. (2018). Balancing informational and social goals in active learning. \emph{Proceedings of the 40th Annual Meeting of the Cognitive Science Society.}
+
+\item {\bf MacDonald, K.}, Blonder, A., Marchman, V.A., Fernald, A., \& Frank, M.C. (2017). An information-seeking account of eye movements during spoken and signed language processing. \emph{Proceedings of the 39th Annual Meeting of the Cognitive Science Society.}
+
+\item {\bf MacDonald, K.}, Yurovsky, D., \& Frank, M.C. (2017). Social cues modulate the representations underlying cross-situational learning. \emph{Cognitive Psychology}, 94, 67–84.
+
+\item Frank, M.C., Lewis, M.L., \& {\bf MacDonald, K.}, (2016). A performance model for early word learning. \emph{Proceedings of the 38th Annual Meeting of the Cognitive Science Society.}
+
+\item {\bf MacDonald, K.}, \& Frank, M.C. (2016). When does passive learning improve the effectiveness of active learning? \emph{Proceedings of the 38th Annual Meeting of the Cognitive Science Society.}
+
+\item {\bf MacDonald, K.}, Yurovsky, D., \& Frank, M.C. (2015). Referential cues modulate attention and memory during cross-situational word learning. \emph{Proceedings of the 37th Annual Meeting of the Cognitive Science Society.}
+
+\item Barth, H., Bhandari, K., Garcia, J., {\bf MacDonald, K.}, \& Chase, E. (2014). Preschoolers trust novel members of accurate speakers? groups and judge them favorably. \emph{Quarterly Journal of Experimental Psychology}, 67, 872-883.
+
+\item {\bf MacDonald, K.}, Schug, M., Chase, E. \& Barth, H. (2013). My People, Right or Wrong? Minimal Group Membership Disrupts Children's Selective Trust in Testimony. \emph{Cognitive Development} 28, 247-259.
+
+\end{bibsection}
+
+%%%%%%%%%%%%% TEACHING AND MENTORSHIP %%%%%%%%%%%%%%%
+
+\section{Teaching and Mentorship}
+
+\vspace{-.1in}
+
+\begin{outerlist}
+
+\item[] Teaching
+
+\begin{innerlist}
+\item[] Intro to Psychology, Stanford University (Guest Lecturer, 2016-2018)\\
+        Language Acquisition, Stanford University (Guest Lecturer, 2018)\\
+        Intro to Statistical Methods, Stanford University (Head TA, 2017)\\
+        Developmental Psychology, Stanford University (Instructor, 2016)\\
+        Learning and Memory, Stanford University (Teaching Assistant, 2016)\\
+        Seminar on Infancy Research, Stanford University (Guest Lecturer, 2016)\\
+        Developmental Psychology, Stanford University (Teaching Assistant, 2015)\\
+        Intro to Psychology, Stanford University (Teaching Assistant, 2014-2015)
+\end{innerlist}
+
+\item[] Undergraduate Research Assistants
+
+\begin{innerlist}
+\item[] Aviva Blonder - CSLI Research Intern, Stanford\\
+        Curt Chang - Communications Research Intern, UCLA \\
+        Vicky Chen - Communications Research Intern, UCLA \\
+        Allison Dods - Symbolic Systems BS, honors thesis, Stanford\\
+        Melina Wailing - Psychology Research Intern, Stanford\\
+        Tami Alade - HumBio Research Intern, Stanford\\
+        Hannah Slater - HumBio Research Intern, Stanford\\
+        Elizabeth Swanson - Psychology Research Intern, Stanford\\
+        Kayla Constandse - Symbolic Systems Research Intern, Stanford
+\end{innerlist}
+
+
+\end{outerlist}
+
+\vspace{.1in}
+
+
+%%%%%%%%%%%%% PRESENTATIONS %%%%%%%%%%%%%%%
+
+\section{Presentations}
+\vspace{-.1in}
+
+\begin{bibsection}
+
+\item {\bf MacDonald, K.}, Marchman, V.A., Fernald, A., \& Frank, M.C. (2018). Children's information seeking during signed and spoken language processing. Invited talk at UCLA Developmental Psychology speaker series.
+
+\item {\bf MacDonald, K.}, Marchman, V.A., Fernald, A., \& Frank, M.C. (2018). Seeking visual information from social partners during language comprehension. Invited talk at Santa Clara University.
+
+\item {\bf MacDonald, K.}, Marchman, V.A., Fernald, A., \& Frank, M.C. (2018). Adults and preschoolers seek visual information to support language comprehension in noisy environments. Oral presentation at the 40th Annual Meeting of the Cognitive Science Society.
+
+\item {\bf MacDonald, K.}, Marchman, V.A., Fernald, A., \& Frank, M.C. (2018). An information-seeking account of eye movements during spoken and signed language processing. Symposium talk presented at the biennial International Conference on Infant Studies, Philadelphia, PA.
+
+\item {\bf MacDonald, K.}, Marchman, V.A., Fernald, A., \& Frank, M.C. (2018). An information-seeking account of eye movements during spoken and signed language processing. Frisem presentation, Stanford University.
+
+\item {\bf MacDonald, K.}, Blonder, A., Marchman, V.A., Fernald, A., \& Frank, M.C. (2017). An information-seeking account of eye movements during spoken and signed language processing. Oral presentation at the 39th Annual Meeting of the Cognitive Science Society, London, England.
+
+\item {\bf MacDonald, K.}, Corina, D., Marchman, V., \& Fernald, A. (2016). Real-time language comprehension in American Sign Language. Workshop on Multimodal Multilingual Outcomes in Deaf and Hard-of-Hearing children, Stockholm, Sweden.
+
+\item {\bf MacDonald, K.}, \& Frank, M.C. (2016). When does passive learning improve the effectiveness of active learning? Oral presentation at the 38th Annual Meeting of the Cognitive Science Society, Pasadena, CA.
+
+\item {\bf MacDonald, K.}, Blonder, A., Marchman, V.A., Fernald, A., \& Frank, M.C. (2016). Speed-accuracy tradeoffs during real-time language comprehension in children learning English and American Sign Language. Poster presented at the biennial International Conference on Infant Studies, New Orleans, LA.
+
+\item {\bf MacDonald, K.}, Yurovsky, D., \& Frank, M.C. (2015). Social cues modulate the strength of encoding alternative referents in cross-situational word learning. Conference talk submitted to the biennial meeting of the Society for Research in Child Development, Philadelphia, PA.
+
+\item {\bf MacDonald, K.}, Corina, D., Marchman, V., \& Fernald, A. (2015). Age-related changes in children's real-time American Sign Language sentence processing. Conference talk submitted to the biennial meeting of the Society for Research in Child Development, Philadelphia, PA.
+
+\item Bion, R., {\bf MacDonald, K.}, \& Fernald, A. (2013). M-o-o-s as cues: Young children map novel animal vocalizations to unfamiliar animals. Symposium submitted to the biennial meeting of the Society for Research in Child Development, Seattle, WA.
+
+\item {\bf MacDonald, K.}, Corina, D., Marchman, V., \& Fernald, A. (2013). Real Time Processing of ASL in Deaf and Hearing Native-Signing Infants. Poster submitted to the biennial meeting of the Society for Research in Child Development, Seattle, WA.
+
+\item {\bf MacDonald, K.}, Bion, R., Adams, K., Marchman, V., Hurtado, N., \& Fernald, A. (2012). M-o-o-s as cues: Young children map novel animal vocalizations to unfamiliar animals. Poster presented at the biennial International Conference on Infant Studies, Minneapolis, MN.
+
+\item {\bf MacDonald, K.}, Schug, M., \& Barth, H. (2011). My people, right or wrong? Minimal group membership disrupts children's selective trust in testimony. Poster presented at the biennial meeting of the Society for Research in Child Development, Montreal, Canada.
+
+\item Barth, H., Garcia, J., Slusser, E., {\bf MacDonald, K.}, Acheampong, A., Kanjlia, S., \& Santiago, R. (2011). Proportional reasoning shapes children's number-line estimates. Conference abstract. Biennial meeting of the Society for Research in Child Development, Montreal, Canada.
+
+\item Sullivan, J., {\bf MacDonald, K.}, Paladino, A., \& Barth, H. (2009). Children's mappings of number words to large numerosities. Conference abstract. Biennial meeting of the Society for Research in Child Development, Denver, CO.
+
+\item Schug, M., Patalano, A., Barth, H., Shusterman, A., Herrig, E., \& {\bf MacDonald, K.} (2009). Group bias, statistical reasoning, and social judgments. Conference abstract. Biennial meeting of the Cognitive Development Society, San Antonio, TX.
+
+\item {\bf MacDonald, K.} \& Barth, H. (2008). Learning the meaning of large number words. Poster presented at the Quantitative Analysis Center Poster Session, Wesleyan University, CT.
+
+\end{bibsection}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Professional Service %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Professional Service}
+
+\begin{outerlist}
+\item[] \emph{Pre-Pi Representative}: DARCLE board
+\item[] \emph{Student Representative}: Graduate Program Committee, Stanford University
+\item[] \emph{Continuing professional memberships in}: Cognitive Science Society, International Society for Infant Studies, Society for Research in Child Development
+\item[] \emph{Ad-hoc reviewer}: Journal of Experimental Child Psychology, 
+                                Cognitive Development, Cognition, Developmental Psychology, 
+                                Proceedings of the Cognitive Science Society, 
+                                IEEE Transactions on Cognitive and Developmental Systems,
+Infant Behavior and Development
+\end{outerlist}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Technical Skills %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Technical Skills}
+
+\begin{outerlist}
+\item[] \emph{Natural languages}: English, American Sign Language
+\item[] \emph{Programming languages}: R, Python, JavaScript, HTML/CSS
+\item[] \emph{Data science}: data visualization, statistics (bayesian and frequentist approaches), experimental design, 
+                            eye-tracking methods, natural language processing, Jekyll, Git, Github, Shiny
+\end{outerlist}
+
+\halfblankline
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% End CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------%
+% The following is copyright and licensing information for
+% redistribution of this LaTeX source code; it also includes a liability
+% statement. If this source code is not being redistributed to others,
+% it may be omitted. It has no effect on the function of the above code.
+%----------------------------------------------------------------------%
+% Copyright (c) 2007, 2008, 2009, 2010, 2011 by Theodore P. Pavlic
+%
+% Unless otherwise expressly stated, this work is licensed under the
+% Creative Commons Attribution-Noncommercial 3.0 United States License. To
+% view a copy of this license, visit
+% http://creativecommons.org/licenses/by-nc/3.0/us/ or send a letter to
+% Creative Commons, 171 Second Street, Suite 300, San Francisco,
+% California, 94105, USA.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+% OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+% MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+% IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+% CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+% TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+%----------------------------------------------------------------------%

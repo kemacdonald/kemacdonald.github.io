@@ -1,2 +1,1 @@
-# kemacdonald.github.io
-Personal page
+# KM Personal Site
