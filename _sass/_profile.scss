@@ -6,8 +6,10 @@
 }
 .address {
     font-family: monospace;
-
-    p { margin: 0; }
+    margin-left: 10px;
+    p {
+        margin: 0;
+        font-size: 14px;}
 }
 
 .news {

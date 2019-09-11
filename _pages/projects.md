@@ -2,7 +2,7 @@
 layout: page
 title: projects
 permalink: /projects/
-description: software development and research projects that I have contributed to in order to promote open and reproducible science
+description: I care about doing open and reproducible science. Here are a set of software development and research projects that I have contributed to in order to promote these goals. Select a project for more details.
 ---
 
 {% for project in site.projects %}

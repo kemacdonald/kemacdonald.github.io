@@ -6,7 +6,7 @@ description: Postdoctoral Researcher, UCLA
 
 profile:
   align: right
-  image: km_2018.jpg
+  image: km_2018.JPG
   address: >
     <p>kemacdonald@ucla.edu</p>
     <p>2133C Rolfe Hall</p>
@@ -17,14 +17,15 @@ social: true
 ---
 
 I am a Postdoctoral researcher in the [Department of Communications](https://comm.ucla.edu/)
-at the University of California, Los Angeles. I work with Anne S. Warlaumont
+at the University of California, Los Angeles where I work with Anne S. Warlaumont
 in the [Emergence of Communication Lab](https://www.annewarlaumont.org/). I completed my PhD
-at Stanford where I worked with [Michael Frank](https://www.stanford.edu/~mcfrank/) in the
-[Language and Cognition Lab](https://langcog.stanford.edu/0).
+at Stanford University, working with [Michael Frank](https://www.stanford.edu/~mcfrank/) in the
+[Language and Cognition Lab](https://langcog.stanford.edu/0) and Anne Fernald and Virginia Marchman in
+the [Language Learning Lab](https://web.stanford.edu/group/langlearninglab/).
 
-My [research](/al-folio/publications/) aims to understand what makes children such powerful learners, especially in the domain of early language acquisition. To answer this question, I use a combination of approaches including eye-tracking, web-based experiments, computational models, and analyses of large-scale naturalistic datasets.
 
-<br/>
+My [research](publications/) aims to understand what makes children such powerful learners. The guiding hypothesis is that children are quite flexible, adapting their active information seeking  to take advantage of rich input within social learning environments. To understand how active and social learning come together, I use a combination of approaches including eye-tracking, web-based experiments, computational models, and analyses of large-scale, naturalistic datasets. 
+
 <h4>Representative publications:</h4>
   * **MacDonald, K.**, Marchman V.A., Fernald, A., & Frank, M.C. (under review). Children flexibly seek visual information during signed and spoken language comprehension. [[Preprint PDF]](https://psyarxiv.com/2r95b) [[code repository]](https://github.com/kemacdonald/speed-acc)
   

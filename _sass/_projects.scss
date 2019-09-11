@@ -1,23 +1,20 @@
 .project {
     box-sizing: border-box;
     float: left;
-    height: 250px;
-    padding: 10px;
+    height: 225px;
+    padding: 5px;
     vertical-align: middle;
     width: 33.33%;
 
     .thumbnail {
         overflow: hidden;
-        height: 200px;
+        height: 175px;
         width: 100%;
 
         img {
             height: auto;
-            opacity: 0.5;
-            position: relative;
-                left: 0%;
-                top: 0%;
-            width: 150px;
+            opacity: 0.75;
+            width: 100px;
         }
 
         a {
@@ -42,6 +39,7 @@
                 h1 {
                     font-size: 1.5rem;
                     margin: 0;
+                    text-decoration: underline;
                 }
 
                 p {
