@@ -8,7 +8,7 @@ profile:
   align: right
   image: km_2018.JPG
   address: >
-    <p>kyle.macdonald@us.mcd.com</p>
+    <p>kyle.macdonald@techlabs.mcd.com</p>
     <p>Los Angeles, CA</p>
 
 news: false
