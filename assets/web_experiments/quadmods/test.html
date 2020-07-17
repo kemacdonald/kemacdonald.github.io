@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>kemacdonald.github.io | my personal website</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="kemacdonald.github.io" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="my personal website" />
+<meta property="og:description" content="my personal website" />
+<meta property="og:site_name" content="kemacdonald.github.io" />
+<script type="application/ld+json">
+{"description":"my personal website","@type":"WebPage","url":"/assets/web_experiments/quadmods/test.html","headline":"kemacdonald.github.io","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=967062f7acae5e9d7742c3d98ae37209d586209d">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="/">kemacdonald.github.io</a></h1>
+      
+
+      <p>In lieu of actually writing testing into the code (this <em>should</em> be done, I just have not had the expertise and time to do so) I will simply describe one set of tests to run.</p>
+
+<p>to set up server:</p>
+
+<ul>
+  <li>cd into quadmods/experiment directory</li>
+  <li>run <code class="highlighter-rouge">python3 -m http.server</code> or your favorite lightweight local test server</li>
+  <li>navigate in your browser to <code class="highlighter-rouge">http://localhost:8000/quadmods.html</code></li>
+</ul>
+
+<h1 id="basic-test">Basic Test</h1>
+
+<p>This test uses <code class="highlighter-rouge">http://localhost:8000/quadmods.html</code>. Everything should run fine here but this is not an address we expect to use in an actual experiment. All parameters that are expected to be set in the url are randomized when absent, so conditions and other variables should change on reload.</p>
+
+<p>Ensure that all slides work. The sequence here is:</p>
+
+<ol>
+  <li>Instructions</li>
+  <li>Entity Pretest</li>
+  <li>Relational Posttest</li>
+  <li>Training</li>
+  <li>Entity Posttest</li>
+  <li>Relational Posttest</li>
+  <li>Survey</li>
+  <li>Final Slide</li>
+</ol>
+
+<p>Things to look for:</p>
+
+<ul>
+  <li>Instructions: text is accurate and slide requires a delay</li>
+  <li>Entity: All buttons work for selecting and deselecting. All data accurately updated after every click. Order should be randomized.</li>
+  <li>Relational: Yes/No buttons work. Answers can be changed. All data accurately updated after every click. Next button does not appear until there is an answer for each question. Order should be randomized</li>
+  <li>Training: Shape grid randomized. Shapes highlighted when clicked. Highlighting accurately reflects concept relationship. Only 3 (exp.num_examples_to_show) can be selected. Next button does not appear until 3 have been selected.
+    <ul>
+      <li>Test each condition and ensure text reflects condition.</li>
+      <li>Responsive: exp.shape_of_focus determined by entity test results. randomly select among shapes with worst accuracy (there are likely to be ties with just 4 questions). shapes that can be clicked (i.e. square vs rectangle vs etc.) also determined by entity test results. randomly select from questions incorrectly answered. if this is fewer than 3 then randomly select from questions accurately answered.</li>
+      <li>Active: shape of focus given in text but learner may select any shape in grid to learn about.</li>
+      <li>Baseline: Shows all examples in grid but gives no feedback.</li>
+      <li>Teaching: As responsive condition except shape_of_focus is determined by url (or randomly) and shapes to select is determined by pedagogical presets.</li>
+    </ul>
+  </li>
+  <li>Survey: Text is accurate and data accurately updated after clicking Next button.</li>
+  <li>Final: data submitted to mturk</li>
+</ul>
+
+<h1 id="url-test">URL test</h1>
+
+<p>Here, test that the url params are correctly passed to the experiment and that the experiment changes accordingly.</p>
+
+<p>The URL format is <code class="highlighter-rouge">https://website.com/?shape=0&amp;condition=0&amp;assignmentId=123RVWYBAZW00EXAMPLE456RVWYBAZW00EXAMPLE&amp;hitId=123RVWYBAZW00EXAMPLE&amp;turkSubmitTo=https://www.mturk.com/&amp;workerId=AZ3456EXAMPLE</code>. On your local machine using the testing server, this should look like <code class="highlighter-rouge">http://localhost:8000/quadmods.html?shape=0&amp;condition=0&amp;assignmentId=123RVWYBAZW00EXAMPLE456RVWYBAZW00EXAMPLE&amp;hitId=123RVWYBAZW00EXAMPLE&amp;turkSubmitTo=https://www.mturk.com/&amp;workerId=AZ3456EXAMPLE</code>.</p>
+
+<ul>
+  <li>Go through all values of <code class="highlighter-rouge">shape</code> and <code class="highlighter-rouge">condition</code> variables (don’t worry about doing all <em>combinations</em>). Make sure the experiment accurately reflects the URL params.</li>
+  <li>Make sure other URL params, such as those used in MTurk like assignmentID, are logged in the experimental data.</li>
+</ul>
+
+<h1 id="mturk-sandbox-test">MTurk Sandbox test</h1>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/kemacdonald/kemacdonald.github.io/edit/gh-pages/assets/web_experiments/quadmods/test.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>
